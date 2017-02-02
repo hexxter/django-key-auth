@@ -2,8 +2,9 @@
 # encoding: utf-8
 from setuptools import setup, find_packages
 from pip.req import parse_requirements
+import pip
 
-install_reqs = parse_requirements("requirements.txt")
+install_reqs = parse_requirements("requirements.txt", session=pip.download.PipSession())
 reqs = [str(each.req) for each in install_reqs if each.req]
 
 setup(
